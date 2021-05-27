@@ -32,6 +32,8 @@ class Title_Screen:
     def run_gamestate(self):
         """Runs the game loop of the gamestate."""
         while self.is_running:
+            self.screen.fill((0, 0, 0))
+
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     self.is_running = False

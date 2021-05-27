@@ -19,11 +19,7 @@ class Main:
         # Gamestates
         self.title_screen = Title_Screen(self)
         self.game_screen = Game_Screen(self)
-
-        self.gamestates = [
-            self.title_screen,
-            self.game_screen,
-        ]
+        self.gamestates = [self.title_screen, self.game_screen]
 
 
     def run_game(self):
