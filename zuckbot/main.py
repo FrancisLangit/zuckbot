@@ -12,11 +12,12 @@ class Main:
 
         # Screen settings.
         self.screen = pygame.display.set_mode((1200, 800))
+        self.screen_rect = self.screen.get_rect()
         pygame.display.set_caption('Zuckbot')
 
         # Array of gamestates.
         self.gamestates = [
-            Title_Screen(),
+            Title_Screen(self),
         ]
 
 
