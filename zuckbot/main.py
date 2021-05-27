@@ -1,6 +1,7 @@
 import pygame
 
 from gamestates.title_screen import Title_Screen
+from gamestates.game_screen import Game_Screen
 
 
 class Main: 
@@ -10,14 +11,18 @@ class Main:
         """Initializes Main class attributes."""
         pygame.init()
 
-        # Screen settings.
+        # Screen Settings
         self.screen = pygame.display.set_mode((1200, 800))
         self.screen_rect = self.screen.get_rect()
         pygame.display.set_caption('Zuckbot')
 
-        # Array of gamestates.
+        # Gamestates
+        self.title_screen = Title_Screen(self)
+        self.game_screen = Game_Screen(self)
+
         self.gamestates = [
-            Title_Screen(self),
+            self.title_screen,
+            self.game_screen,
         ]
 
 
