@@ -7,12 +7,13 @@ class Prompt_Text:
     def __init__(self, gamestate):
         """Initializes Title_Text class attributes."""
         self.gamestate = gamestate
-        self.font = pygame.font.SysFont(None, 48)
+        self.settings = gamestate.settings
+        
+        self.font = pygame.font.Font(self.settings.font_light_filename, 48)
         self.image = self.font.render(
             "Press Enter", 
             True, 
-            (255, 255, 255), 
-            (0, 0, 0)
+            self.settings.font_color, 
         )
         self.image_rect = self.image.get_rect(
             center=self.gamestate.screen_rect.center)

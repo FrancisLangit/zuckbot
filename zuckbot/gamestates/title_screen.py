@@ -1,4 +1,6 @@
 import sys
+sys.path.append(".") 
+
 import pygame
 
 from .objects.title_text import Title_Text
@@ -11,6 +13,7 @@ class Title_Screen:
     def __init__(self, main):
         """Initializes Title_Screen class attributes."""
         self.main = main
+        self.settings = main.settings
         self.screen = main.screen
         self.screen_rect = main.screen_rect
 
@@ -32,7 +35,7 @@ class Title_Screen:
     def run_gamestate(self):
         """Runs the game loop of the gamestate."""
         while self.is_running:
-            self.screen.fill((0, 0, 0))
+            self.screen.fill(self.settings.screen_background_color)
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
