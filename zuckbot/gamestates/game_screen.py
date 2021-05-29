@@ -1,11 +1,11 @@
-from typing import Text
 import pygame
 
-from .objects.pygame_textinput import TextInput
+from .objects.question_input import Question_Input
 
 
 class Game_Screen:
     """Gamestate where user interacts with Zuckbot."""
+
 
     def __init__(self, main):
         """Initialize Game_Screen class attributes."""
@@ -14,13 +14,7 @@ class Game_Screen:
         self.screen = main.screen
         self.screen_rect = main.screen_rect
 
-        self.question_input = TextInput(
-            font_family=self.settings.font_regular_filename,
-            antialias=True,
-            text_color=self.settings.font_color,
-            cursor_color=self.settings.font_color,
-            max_string_length=self.settings.question_input_max_length,
-        )
+        self.question_input = Question_Input(self)
 
         self.is_running = False
 
@@ -46,9 +40,6 @@ class Game_Screen:
                     self._check_keydown_events(event)
 
             self.question_input.update(events)
-            self.screen.blit(
-                self.question_input.get_surface(), 
-                self.settings.question_input_dest
-            )
+            self.question_input.blitme()
 
             pygame.display.update()
