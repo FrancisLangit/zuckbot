@@ -1,5 +1,6 @@
 import pygame
 
+
 class Game_Screen:
     """Gamestate where user interacts with Zuckbot."""
 
