@@ -32,6 +32,12 @@ class Question_Input:
         """Updates the contents of the object's text input."""
         self.text_input.update(events)
 
+    
+    def reset(self):
+        """Reset value of self.text_input. Helps in preventing stuck key in 
+        input field upon exit to title screen."""
+        self.text_input = self._get_text_input()
+
 
     def blitme(self):
         """Blits the object onto the screen."""
