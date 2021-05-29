@@ -15,3 +15,4 @@ class Settings:
         self.font_color = (255, 255, 255)
         self.font_bold_filename = './zuckbot/data/Open Sans Bold.ttf'
         self.font_light_filename = './zuckbot/data/Open Sans Light.ttf'
+        self.font_regular_filename = './zuckbot/data/Open Sans Regular.ttf'

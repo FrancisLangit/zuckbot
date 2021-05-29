@@ -1,4 +1,7 @@
+from typing import Text
 import pygame
+
+from .objects.pygame_textinput import TextInput
 
 
 class Game_Screen:
@@ -10,6 +13,13 @@ class Game_Screen:
         self.settings = main.settings
         self.screen = main.screen
         self.screen_rect = main.screen_rect
+
+        self.text_input = TextInput(
+            font_family=self.settings.font_regular_filename,
+            antialias=True,
+            text_color=self.settings.font_color,
+            cursor_color=self.settings.font_color,
+        )
 
         self.is_running = False
 
@@ -27,10 +37,14 @@ class Game_Screen:
         while self.is_running:
             self.screen.fill(self.settings.screen_background_color)
             
-            for event in pygame.event.get():
+            events = pygame.event.get()
+            for event in events:
                 if event.type == pygame.QUIT:
                     self.is_running = False
                 if event.type == pygame.KEYDOWN:
                     self._check_keydown_events(event)
 
-            pygame.display.flip()
+            self.text_input.update(events)
+            self.screen.blit(self.text_input.get_surface(), (25, 25))
+
+            pygame.display.update()
