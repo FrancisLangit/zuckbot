@@ -14,11 +14,12 @@ class Game_Screen:
         self.screen = main.screen
         self.screen_rect = main.screen_rect
 
-        self.text_input = TextInput(
+        self.question_input = TextInput(
             font_family=self.settings.font_regular_filename,
             antialias=True,
             text_color=self.settings.font_color,
             cursor_color=self.settings.font_color,
+            max_string_length=self.settings.question_input_max_length,
         )
 
         self.is_running = False
@@ -44,7 +45,10 @@ class Game_Screen:
                 if event.type == pygame.KEYDOWN:
                     self._check_keydown_events(event)
 
-            self.text_input.update(events)
-            self.screen.blit(self.text_input.get_surface(), (25, 25))
+            self.question_input.update(events)
+            self.screen.blit(
+                self.question_input.get_surface(), 
+                self.settings.question_input_dest
+            )
 
             pygame.display.update()
