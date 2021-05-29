@@ -46,7 +46,6 @@ class Title_Screen:
             self.main.game_screen.run_gamestate()
 
 
-
     def run_gamestate(self):
         """Runs the game loop of the gamestate."""
         while self.is_running:
