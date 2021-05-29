@@ -23,9 +23,7 @@ class Game_Screen:
         """Checks of keydown events of the gamestate."""
         if event.key == pygame.K_ESCAPE:
             self.question_input.reset()
-            self.is_running = False
-            self.main.title_screen.is_running = True
-            self.main.title_screen.run_gamestate()
+            self.main.switch_gamestate(self, self.main.title_screen)
         if event.key == pygame.K_RETURN:
             self.question_input.text_input.clear_text()
 

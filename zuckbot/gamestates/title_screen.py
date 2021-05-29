@@ -41,9 +41,7 @@ class Title_Screen:
         if event.key == pygame.K_ESCAPE:
             sys.exit()
         if event.key == pygame.K_RETURN:
-            self.is_running = False
-            self.main.game_screen.is_running = True
-            self.main.game_screen.run_gamestate()
+            self.main.switch_gamestate(self, self.main.game_screen)
 
 
     def run_gamestate(self):
