@@ -25,6 +25,14 @@ class Main:
         self.gamestates = [self.title_screen, self.game_screen]
 
 
+    def switch_gamestate(self, source_gamestate, target_gamestate):
+        """Helper function used that shuts down source gamestate passed and 
+        switches interface to target interface indicated."""
+        source_gamestate.is_running = False
+        target_gamestate.is_running = True
+        target_gamestate.run_gamestate()
+
+
     def run_game(self):
         """Runs the game loop of the program."""
         for gamestate in self.gamestates:
