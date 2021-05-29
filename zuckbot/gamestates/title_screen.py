@@ -16,7 +16,15 @@ class Title_Screen:
         self.screen = main.screen
         self.screen_rect = main.screen_rect
 
-        self.title_text = Centered_Text(
+        self.title_text = self._get_title_text()
+        self.prompt_text = self._get_prompt_text()
+        
+        self.is_running = True
+
+
+    def _get_title_text(self):
+        """Returns Centered_Text instance representing title text."""
+        return Centered_Text(
             self,
             self.settings.font_bold_filename,
             96,
@@ -24,7 +32,12 @@ class Title_Screen:
             "zuckbot",
             -50,
         )
-        self.prompt_text = Centered_Text(
+
+
+    def _get_prompt_text(self):
+        """Returns Centered_Text instance representing text prompting user to
+        press enter."""
+        return Centered_Text(
             self,
             self.settings.font_light_filename,
             48,
@@ -32,16 +45,23 @@ class Title_Screen:
             "Press Enter",
             50,
         )
-        
-        self.is_running = True
 
 
     def _check_keydown_events(self, event):
-        """Checks of keydown events of the gamestate."""
+        """Checks keydown events of the gamestate."""
         if event.key == pygame.K_ESCAPE:
             sys.exit()
         if event.key == pygame.K_RETURN:
             self.main.switch_gamestate(self, self.main.game_screen)
+
+
+    def _check_events(self):
+        """Checks events of the gamestate."""
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                self.is_running = False
+            if event.type == pygame.KEYDOWN:
+                self._check_keydown_events(event)
 
 
     def run_gamestate(self):
@@ -49,13 +69,9 @@ class Title_Screen:
         while self.is_running:
             self.screen.fill(self.settings.screen_background_color)
 
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    self.is_running = False
-                if event.type == pygame.KEYDOWN:
-                    self._check_keydown_events(event)
+            self._check_events()
 
             self.title_text.blitme()
             self.prompt_text.blitme()
-
+            
             pygame.display.flip()
