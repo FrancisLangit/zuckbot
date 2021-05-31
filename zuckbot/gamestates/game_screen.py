@@ -28,7 +28,7 @@ class Game_Screen:
             self.main.switch_gamestate(self, self.main.title_screen)
         if event.key == pygame.K_RETURN:
             if not self.question_input.is_blank():
-                self.zuckbot.speak()
+                self.zuckbot.answer()
                 self.question_input.text_input.clear_text()
 
 
@@ -51,5 +51,6 @@ class Game_Screen:
             self.question_input.update(events)
 
             self.question_input.blitme()
+            self.zuckbot.blitme()
 
             pygame.display.flip()

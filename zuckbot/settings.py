@@ -39,7 +39,7 @@ class Settings:
             ('This is a complex issue that I think deserves more than a '
              'one word answer.'),
             "I don't know the answer to that off the top of my head.",
-            'Maybe.'
+            'Maybe.',
             "Can't really give you an answer to that one."
         ]
         self.zuckbot_negative_answers = [
@@ -61,4 +61,3 @@ class Settings:
             'data/images/zuckbot_noncomittal.jpg')
         self.zuckbot_negative_filename = (
             'data/images/zuckbot_negative.jpg')
-
