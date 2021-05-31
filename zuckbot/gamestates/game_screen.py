@@ -1,6 +1,8 @@
+from zuckbot.gamestates.objects.zuckbot import Zuckbot
 import pygame
 
 from .objects.question_input import Question_Input
+from .objects.zuckbot import Zuckbot
 
 
 class Game_Screen:
@@ -15,6 +17,7 @@ class Game_Screen:
         self.screen_rect = main.screen_rect
 
         self.question_input = Question_Input(self)
+        self.zuckbot = Zuckbot()
 
         self.is_running = False
 
@@ -25,9 +28,11 @@ class Game_Screen:
             self.question_input.reset()
             self.main.switch_gamestate(self, self.main.title_screen)
         if event.key == pygame.K_RETURN:
-            self.question_input.text_input.clear_text()
+            if not self.question_input.is_blank():
+                self.zuckbot.speak()
+                self.question_input.text_input.clear_text()
 
-    
+
     def _check_events(self, events):
         """Checks events of the gamestate."""
         for event in events:
