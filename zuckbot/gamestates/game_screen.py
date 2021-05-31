@@ -17,7 +17,7 @@ class Game_Screen:
         self.screen_rect = main.screen_rect
 
         self.question_input = Question_Input(self)
-        self.zuckbot = Zuckbot()
+        self.zuckbot = Zuckbot(self)
 
         self.is_running = False
 
