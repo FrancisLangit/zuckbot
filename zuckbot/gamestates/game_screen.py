@@ -1,4 +1,3 @@
-from zuckbot.gamestates.objects.zuckbot import Zuckbot
 import pygame
 
 from .objects.question_input import Question_Input
