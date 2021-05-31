@@ -33,7 +33,6 @@ class Game_Screen:
                 self.question_input.text_input.clear_text()
 
 
-    
     def _check_events(self, events):
         """Checks events of the gamestate."""
         for event in events:

@@ -30,7 +30,7 @@ class Question_Input:
     
     def is_blank(self):
         """Returns True if user has not inputted anything into input field."""
-        if not self.text_input.input_string[2:]:
+        if not self.text_input.input_string[2:].strip():
             return True
 
 
