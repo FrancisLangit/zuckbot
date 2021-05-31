@@ -28,8 +28,10 @@ class Game_Screen:
             self.question_input.reset()
             self.main.switch_gamestate(self, self.main.title_screen)
         if event.key == pygame.K_RETURN:
-            self.question_input.text_input.clear_text()
-            self.zuckbot.speak()
+            if not self.question_input.is_blank():
+                self.zuckbot.speak()
+                self.question_input.text_input.clear_text()
+
 
     
     def _check_events(self, events):

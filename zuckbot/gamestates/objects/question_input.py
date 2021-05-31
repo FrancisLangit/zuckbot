@@ -27,6 +27,12 @@ class Question_Input:
             max_string_length=self.settings.question_input_max_length,
         )
 
+    
+    def is_blank(self):
+        """Returns True if user has not inputted anything into input field."""
+        if not self.text_input.input_string[2:]:
+            return True
+
 
     def update(self, events):
         """Updates the contents of the object's text input."""
