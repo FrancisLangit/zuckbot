@@ -1,3 +1,5 @@
+import random
+
 import pyttsx3
 
 
@@ -8,6 +10,7 @@ class Zuckbot:
     def __init__(self):
         """Initializes Zuckbot class attributes."""
         self.tts_engine = pyttsx3.init()
+
         self.answers = [
             # Affirmative
             """Yes, I believe that that's correct.""",
@@ -38,5 +41,5 @@ class Zuckbot:
 
     def speak(self):
         """Makes Zuckbot's text-to-speech engine say something random."""
-        self.tts_engine.say(self.answers[13])
+        self.tts_engine.say(random.choice(self.answers))
         self.tts_engine.runAndWait()
