@@ -40,6 +40,9 @@ class Settings:
             "I'm not sure of the answer to that question.",
             'Maybe.',
             'This is a complex issue that deserves more than one word.',
+            "Can't answer right now. Too much sunscreen on my face.",
+            "Hold on, I'll ask my legal counsel first.",
+            "We'll get back to you on that.",
         ]
         self.zuckbot_negative_answers = [
             'A squirrel dying in front of your house may be more relevant.',
