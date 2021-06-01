@@ -25,6 +25,7 @@ class Game_Screen:
         """Checks keydown events of the gamestate."""
         if event.key == pygame.K_ESCAPE:
             self.question_input.reset()
+            self.zuckbot.reset()
             self.main.switch_gamestate(self, self.main.title_screen)
         if event.key == pygame.K_RETURN:
             if not self.question_input.is_blank():

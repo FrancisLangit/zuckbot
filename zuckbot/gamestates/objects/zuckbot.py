@@ -83,8 +83,15 @@ class Zuckbot:
         threading.Thread(target=self.tts_engine.runAndWait).start()
 
 
+    def reset(self):
+        """Resets Zuckbot's text and image back to default values."""
+        self.answer_text = self._get_answer_text('Awaiting input.')
+        self.answer_image = pygame.image.load(
+            self.settings.zuckbot_neutral_filename)
+
+
     def answer(self):
-        """Makes Zuckbot speak an answer and display an image from a randomly 
+        """Makes Zuckbot speak an answer and display an image from a randomly
         chosen tuple value."""
         answer = self._get_answer()
         self._update_visuals(answer[1], answer[0])
