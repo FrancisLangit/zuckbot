@@ -1,7 +1,8 @@
 import random
+import threading
 
-import gtts
 import pygame
+import pyttsx3
 
 from .centered_text import Centered_Text
 
@@ -17,10 +18,14 @@ class Zuckbot:
         self.screen = gamestate.screen
         self.screen_rect = gamestate.screen_rect
 
+        self.tts_engine = pyttsx3.init()
+
         self.answers = self._get_answers_dict()
 
-        self.answer_image = pygame.image.load(self.settings.zuckbot_neutral_filename)
-        self.answer_image_rect = self.answer_image.get_rect(center=self.screen_rect.center)
+        self.answer_image = pygame.image.load(
+            self.settings.zuckbot_neutral_filename)
+        self.answer_image_rect = self.answer_image.get_rect(
+            center=self.screen_rect.center)
         self.answer_image_rect.y -= 10
 
         self.answer_text = self._get_answer_text('Awaiting input.')
@@ -69,11 +74,13 @@ class Zuckbot:
 
     
     def _say_answer(self, answer_string):
-        """Makes text-to-speech engine of Zuckbot say answer string passed.
+        """Makes text-to-speech engine of Zuckbot say answer string passed. 
+        Text to speech engine is run on a separate thread.
         
-        Argument:
+        Arguments:
             answer_string (str) : String for TTS engine to say."""
-        pass
+        self.tts_engine.say(answer_string)
+        threading.Thread(target=self.tts_engine.runAndWait).start()
 
 
     def answer(self):

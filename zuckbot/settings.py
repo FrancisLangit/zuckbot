@@ -26,14 +26,14 @@ class Settings:
         # Zuckbot Answers
         self.zuckbot_affirmative_answers = [
             "I don't see why that isn't possible.",
-            "It's almost a disadvantage if you're not on it now",
+            "It's almost a disadvantage if you're not on it now.",
             'Sure, if you do the things that are easier first.',
-            "There's a lot of that in Silicon Valley",
+            "There's a lot of that in Silicon Valley.",
             'Yes.',
             "Yes, I believe that that's correct.",
         ]
         self.zuckbot_noncomittal_answers = [
-            "Can't really give you an answer to that one."
+            "Can't really give you an answer to that one.",
             "I don't know the answer to that off the top of my head.",
             'I hope not.',
             "I'm not sure what that means.",
