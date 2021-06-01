@@ -17,6 +17,7 @@ class Settings:
         self.font_bold_filename = 'data/fonts/open_sans_bold.ttf'
         self.font_light_filename = 'data/fonts/open_sans_light.ttf'
         self.font_regular_filename = 'data/fonts/open_sans_reg.ttf'
+        self.font_mono_filename = 'data/fonts/ibm_plex_mono_reg.ttf'
 
         # Question Input
         self.question_input_max_length = 64

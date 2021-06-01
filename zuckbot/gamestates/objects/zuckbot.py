@@ -3,6 +3,8 @@ import random
 import pygame
 import pyttsx3
 
+from .centered_text import Centered_Text
+
 
 class Zuckbot:
     """Virtual reincarnation of Mark Zuckerberg."""
@@ -18,8 +20,18 @@ class Zuckbot:
         self.tts_engine = pyttsx3.init()
         self.answers = self._get_answers_dict()
 
-        self.image = pygame.image.load(self.settings.zuckbot_negative_filename)
+        self.image = pygame.image.load(self.settings.zuckbot_neutral_filename)
         self.image_rect = self.image.get_rect(center=self.screen_rect.center)
+        self.image_rect.y -= 10
+
+        self.answer_text = Centered_Text(
+            gamestate, 
+            self.settings.font_mono_filename,
+            25,
+            self.settings.font_color,
+            "Awaiting input.",
+            250,
+        )
 
 
     def _get_answers_dict(self):
@@ -57,3 +69,4 @@ class Zuckbot:
     def blitme(self):
         """Blits the object onto the screen."""
         self.screen.blit(self.image, self.image_rect)
+        self.answer_text.blitme()
