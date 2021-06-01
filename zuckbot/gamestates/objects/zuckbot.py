@@ -18,8 +18,9 @@ class Zuckbot:
         self.tts_engine = pyttsx3.init()
         self.answers = self._get_answers_dict()
 
-        self.image = pygame.image.load(self.settings.zuckbot_neutral_filename)
+        self.image = pygame.image.load(self.settings.zuckbot_negative_filename)
         self.image_rect = self.image.get_rect(center=self.screen_rect.center)
+
 
     def _get_answers_dict(self):
         """Returns a dictionary of answer-image key-value pairs."""
