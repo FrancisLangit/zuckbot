@@ -54,10 +54,10 @@ class Settings:
 
         # Zuckbot Images
         self.zuckbot_neutral_filename = (
-            'data/images/zuckbot_neutral.jpg')
+            'data/images/zuckbot_neutral_1.jpg')
         self.zuckbot_affirmative_filename = (
-            'data/images/zuckbot_affirmative.jpg')
+            'data/images/zuckbot_affirmative_5.jpg')
         self.zuckbot_noncomittal_filename = (
-            'data/images/zuckbot_noncomittal.jpg')
+            'data/images/zuckbot_noncomittal_1.jpg')
         self.zuckbot_negative_filename = (
-            'data/images/zuckbot_negative.jpg')
+            'data/images/zuckbot_negative_1.jpg')
