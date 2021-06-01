@@ -25,32 +25,28 @@ class Settings:
 
         # Zuckbot Answers
         self.zuckbot_affirmative_answers = [
-            "Yes, I believe that that's correct",
-            ('If you do the things that are easier first, then you can '
-             'actually make a lot of progress.'),
+            "I don't see why that isn't possible.",
             "It's almost a disadvantage if you're not on it now",
+            'Sure, if you do the things that are easier first.',
             "There's a lot of that in Silicon Valley",
-            "I don't see why that isn't possible."
             'Yes.',
+            "Yes, I believe that that's correct.",
         ]
         self.zuckbot_noncomittal_answers = [
+            "Can't really give you an answer to that one."
+            "I don't know the answer to that off the top of my head.",
+            'I hope not.',
             "I'm not sure what that means.",
             "I'm not sure of the answer to that question.",
-            'I hope not.',
-            ('This is a complex issue that I think deserves more than a '
-             'one word answer.'),
-            "I don't know the answer to that off the top of my head.",
             'Maybe.',
-            "Can't really give you an answer to that one."
+            'This is a complex issue that deserves more than one word.',
         ]
         self.zuckbot_negative_answers = [
-            ('A squirrel dying in front of your house may be more relevant '
-             'to your interests right now.'),
+            'A squirrel dying in front of your house may be more relevant.',
             "Certainly doesn't feel like that to me.",
-            "No, I would not choose to do that publicly here.",
-            ("If you're always under the pressure of real identity, I think "
-             "that is somewhat of a burden."),
+            'I think that is somewhat of a burden.',
             "No.",
+            "No, I would not choose to do that publicly here.",
         ]
 
         # Zuckbot Images
