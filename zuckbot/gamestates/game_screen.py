@@ -2,6 +2,7 @@ import pygame
 
 from .objects.question_input import Question_Input
 from .objects.zuckbot import Zuckbot
+from .objects.footer import Footer
 
 
 class Game_Screen:
@@ -17,6 +18,7 @@ class Game_Screen:
 
         self.question_input = Question_Input(self)
         self.zuckbot = Zuckbot(self)
+        self.footer = Footer(self)
 
         self.is_running = False
 
@@ -67,5 +69,6 @@ class Game_Screen:
 
             self.question_input.blitme()
             self.zuckbot.blitme()
+            self.footer.blitme()
 
             pygame.display.flip()
