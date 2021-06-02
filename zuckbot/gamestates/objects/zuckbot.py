@@ -23,7 +23,7 @@ class Zuckbot:
             self.settings.zuckbot_neutral_filename)
         self.answer_image_rect = self._get_answer_image_rect()
 
-        self.answer_text = self._get_answer_text('Awaiting input.')
+        self.answer_text = self._get_answer_text('Awaiting question.')
         
 
     def _get_answer_image_rect(self):
@@ -58,7 +58,7 @@ class Zuckbot:
 
     def reset(self):
         """Resets Zuckbot's text and image back to default values."""
-        self.answer_text = self._get_answer_text('Awaiting input.')
+        self.answer_text = self._get_answer_text('Awaiting question.')
         self.answer_image = pygame.image.load(
             self.settings.zuckbot_neutral_filename)
         pygame.mixer.stop()

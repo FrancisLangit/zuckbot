@@ -18,11 +18,14 @@ class Centered_Text:
         y_offset=None):
             """Initialize object attributes."""
             self.gamestate = gamestate
+            self.settings = gamestate.settings
+
             self.font_filename = font_filename
             self.font_size = font_size
             self.font_color = font_color
             self.text = text
             self.y_offset = y_offset
+            self.blink_counter = 0
 
             self.image = self._get_image()
             self.image_rect = self._get_image_rect()
@@ -48,6 +51,22 @@ class Centered_Text:
         return image_rect
 
 
+    def update_blink(self):
+        self.blink_counter += 1
+        if 0 < self.blink_counter < 100:
+            self.font_color = self.settings.font_color
+        elif 100 <= self.blink_counter < 200:
+            self.font_color = self.settings.screen_background_color
+        else:
+            self.blink_counter = 0
+
+        self.image = self._get_image()
+
+
     def blitme(self):
         """Blits the object onto the screen."""
         self.gamestate.screen.blit(self.image, self.image_rect)
+
+
+class Blinking_Centered_Text(Centered_Text):
+    pass

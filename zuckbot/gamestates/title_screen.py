@@ -18,6 +18,7 @@ class Title_Screen:
 
         self.title_text = self._get_title_text()
         self.prompt_text = self._get_prompt_text()
+        self.prompt_text_blink_count = 0
         
         self.is_running = True
 
@@ -71,7 +72,9 @@ class Title_Screen:
 
             self._check_events()
 
+            self.prompt_text.update_blink()
+
             self.title_text.blitme()
             self.prompt_text.blitme()
-            
+
             pygame.display.flip()
