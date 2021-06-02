@@ -1,10 +1,10 @@
 import random
-import threading
 
 import pygame
 import pyttsx3
 
 from .centered_text import Centered_Text
+from .zuckbot_answers import Zuckbot_Answers
 
 
 class Zuckbot:
@@ -20,39 +20,22 @@ class Zuckbot:
 
         self.tts_engine = pyttsx3.init()
 
-        self.answers = self._get_answers_dict()
+        self.answers = Zuckbot_Answers().get()
 
         self.answer_image = pygame.image.load(
             self.settings.zuckbot_neutral_filename)
-        self.answer_image_rect = self.answer_image.get_rect(
-            center=self.screen_rect.center)
-        self.answer_image_rect.y -= 10
+        self.answer_image_rect = self._get_answer_image_rect()
 
         self.answer_text = self._get_answer_text('Awaiting input.')
+        
 
-
-    def _get_answers_dict(self):
-        """Returns a dictionary of answer-image key-value pairs."""
-        return {
-            **dict.fromkeys(
-                self.settings.zuckbot_affirmative_answers,
-                pygame.image.load(self.settings.zuckbot_affirmative_filename)
-            ),
-            **dict.fromkeys(
-                self.settings.zuckbot_noncomittal_answers,
-                pygame.image.load(self.settings.zuckbot_noncomittal_filename)
-            ),
-            **dict.fromkeys(
-                self.settings.zuckbot_negative_answers,
-                pygame.image.load(self.settings.zuckbot_negative_filename)
-            )
-        }
-
-
-    def _get_answer(self):
-        """Returns a random key-value pair from answer dictionary in the form 
-        of a tuple."""
-        return random.choice(list(self.answers.items()))
+    def _get_answer_image_rect(self):
+        """Returns rect of Zuckbot's Pygame image object. To be used as pos 
+        when blitting to screen."""
+        answer_image_rect = self.answer_image.get_rect(
+            center=self.screen_rect.center)
+        answer_image_rect.y -= 10
+        return answer_image_rect
 
 
     def _get_answer_text(self, answer_string):
@@ -67,28 +50,13 @@ class Zuckbot:
         )
 
 
-    def _update_visuals(self, answer_image, answer_string):
-        """Updates the answer image and answer text of Zuckbot."""
-        self.answer_image = answer_image
-        self.answer_text = self._get_answer_text(answer_string)
-
-    
-    def _say_answer(self, answer_string):
-        """Makes text-to-speech engine of Zuckbot say answer string passed. 
-        Text to speech engine is run on a separate thread.
-        
-        Arguments:
-            answer_string (str) : String for TTS engine to say."""
-        self.tts_engine.say(answer_string)
-        threading.Thread(target=self.tts_engine.runAndWait).start()
-
-
     def answer(self):
         """Makes Zuckbot speak an answer and display an image from a randomly
         chosen tuple value."""
-        answer = self._get_answer()
-        self._update_visuals(answer[1], answer[0])
-        self._say_answer(answer[0])
+        answer = random.choice(self.answers)
+        answer['sound'].play()
+        self.answer_image = answer['image']
+        self.answer_text = self._get_answer_text(answer['text'])
 
 
     def reset(self):
