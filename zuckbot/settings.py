@@ -29,7 +29,6 @@ class Settings:
             "It's almost a disadvantage if you're not on it now.",
             'Sure, if you do the things that are easier first.',
             "There's a lot of that in Silicon Valley.",
-            'Yes.',
             "Yes, I believe that that's correct.",
         ]
         self.zuckbot_noncomittal_answers = [
