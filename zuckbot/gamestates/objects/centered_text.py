@@ -2,33 +2,40 @@ import pygame
 
 
 class Centered_Text:
-    """Centered text image object.
-    
-    Parameters:
-        gamestate (object)        : Gamestate where the object will be displayed.
-        font_filename (string)    : Filename of the font.
-        font_size (int)           : Size of the font. 
-        font_color (tuple)        : Color of the font in (R, G, B).    
-        text (string)             : Text of the object.
-        y_offset (int) [optional] : Pixels the image will offset by on y-axis. 
-    """
+    """Centered text image object."""
 
-
-    def __init__(self, gamestate, font_filename, font_size, font_color, text,
+    def __init__(
+        self, 
+        gamestate, 
+        font_filename, 
+        font_size, 
+        font_color, 
+        text,
         y_offset=None):
-            """Initialize object attributes."""
-            self.gamestate = gamestate
-            self.settings = gamestate.settings
+        """Initialize Centered_Text class attributes.
+        
+        Parameters:
+            gamestate (object)        : Gamestate where the object will be
+                displayed.
+            font_filename (string)    : Filename of the font.
+            font_size (int)           : Size of the font.
+            font_color (tuple)        : Color of the font in (R, G, B).
+            text (string)             : Text of the object.
+            y_offset (int) [optional] : Pixels the image will offset by on 
+                y-axis. 
+        """
 
-            self.font_filename = font_filename
-            self.font_size = font_size
-            self.font_color = font_color
-            self.text = text
-            self.y_offset = y_offset
-            self.blink_counter = 0
+        self.gamestate = gamestate
+        self.settings = gamestate.settings
 
-            self.image = self._get_image()
-            self.image_rect = self._get_image_rect()
+        self.font_filename = font_filename
+        self.font_size = font_size
+        self.font_color = font_color
+        self.text = text
+        self.y_offset = y_offset
+
+        self.image = self._get_image()
+        self.image_rect = self._get_image_rect()
 
 
     def _get_image(self):
@@ -51,7 +58,42 @@ class Centered_Text:
         return image_rect
 
 
+    def blitme(self):
+        """Blits the object onto the screen."""
+        self.gamestate.screen.blit(self.image, self.image_rect)
+
+
+class Blinking_Centered_Text(Centered_Text):
+    """Centered text image object that can appear as flashing."""
+
+    def __init__(
+        self, 
+        gamestate, 
+        font_filename, 
+        font_size, 
+        font_color, 
+        text,
+        y_offset=None):
+        """Initialize Blinking_Centered_Text class attributes.
+        
+        Parameters:
+            gamestate (object)        : Gamestate where the object will be
+                displayed.
+            font_filename (string)    : Filename of the font.
+            font_size (int)           : Size of the font.
+            font_color (tuple)        : Color of the font in (R, G, B).
+            text (string)             : Text of the object.
+            y_offset (int) [optional] : Pixels the image will offset by on 
+                y-axis. 
+        """
+        super().__init__(gamestate, font_filename, font_size, font_color, 
+            text, y_offset)
+        self.blink_counter = 0
+        
+        
     def update_blink(self):
+        """Checks blink counter of object and updates its text's appearance 
+        based off of such."""
         self.blink_counter += 1
         if 0 < self.blink_counter < 100:
             self.font_color = self.settings.font_color
@@ -59,14 +101,4 @@ class Centered_Text:
             self.font_color = self.settings.screen_background_color
         else:
             self.blink_counter = 0
-
         self.image = self._get_image()
-
-
-    def blitme(self):
-        """Blits the object onto the screen."""
-        self.gamestate.screen.blit(self.image, self.image_rect)
-
-
-class Blinking_Centered_Text(Centered_Text):
-    pass

@@ -3,7 +3,7 @@ sys.path.append(".")
 
 import pygame
 
-from .objects.centered_text import Centered_Text
+from .objects.centered_text import Blinking_Centered_Text, Centered_Text
 
 
 class Title_Screen:
@@ -38,7 +38,7 @@ class Title_Screen:
     def _get_prompt_text(self):
         """Returns Centered_Text instance representing text prompting user to
         press enter."""
-        return Centered_Text(
+        return Blinking_Centered_Text(
             self,
             self.settings.font_light_filename,
             48,
