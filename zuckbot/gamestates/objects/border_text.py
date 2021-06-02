@@ -31,7 +31,7 @@ class Border_Text:
             self.settings.font_light_filename,
             14,
             self.settings.font_color,
-            'Copyright © 2021 • francis.villanueva.langit@gmail.com',
+            'Copyright © 2021 • github.com/FrancisLangit/zuckbot',
             {'bottomleft': self.screen_rect.bottomleft},
             25,
             -20
