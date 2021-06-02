@@ -52,7 +52,7 @@ class Game_Screen:
                 self.is_running = False
             if event.type == pygame.KEYDOWN:
                 self._check_keydown_events(event)
-                
+
 
     def run_gamestate(self):
         """Runs the game loop of the gamestate."""

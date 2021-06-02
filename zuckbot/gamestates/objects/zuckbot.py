@@ -61,10 +61,11 @@ class Zuckbot:
         self.answer_text = self._get_answer_text('Awaiting input.')
         self.answer_image = pygame.image.load(
             self.settings.zuckbot_neutral_filename)
+        pygame.mixer.stop()
 
     
     def update(self):
-        """Checks if Zuckbot is already answering. If not, calls reser()."""
+        """Checks if Zuckbot is already answering. If not, calls reset()."""
         if not pygame.mixer.get_busy():
             self.reset()
 
