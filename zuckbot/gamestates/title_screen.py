@@ -63,7 +63,7 @@ class Title_Screen:
         """Checks events of the gamestate."""
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                self.is_running = False
+                sys.exit()  
             if event.type == pygame.KEYDOWN:
                 self._check_keydown_events(event)
 

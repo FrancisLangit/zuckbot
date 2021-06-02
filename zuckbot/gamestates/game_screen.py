@@ -1,3 +1,5 @@
+import sys
+
 import pygame
 
 from .objects.question_input import Question_Input
@@ -51,7 +53,7 @@ class Game_Screen:
         """Checks events of the gamestate."""
         for event in events:
             if event.type == pygame.QUIT:
-                self.is_running = False
+                sys.exit()
             if event.type == pygame.KEYDOWN:
                 self._check_keydown_events(event)
 
