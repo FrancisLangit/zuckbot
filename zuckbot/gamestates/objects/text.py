@@ -110,9 +110,9 @@ class Blinking_Text(Text):
         """Checks blink counter of object and updates its text's appearance 
         based off of such."""
         self.blink_counter += 1
-        if 0 < self.blink_counter < 100:
+        if 0 < self.blink_counter < 150:
             self.font_color = self.settings.font_color
-        elif 100 <= self.blink_counter < 200:
+        elif 150 <= self.blink_counter < 300:
             self.font_color = self.settings.screen_background_color
         else:
             self.blink_counter = 0
