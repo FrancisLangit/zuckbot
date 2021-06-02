@@ -3,7 +3,7 @@ sys.path.append(".")
 
 import pygame
 
-from .objects.centered_text import Blinking_Centered_Text, Centered_Text
+from .objects.text import Text, Blinking_Text
 
 
 class Title_Screen:
@@ -24,26 +24,29 @@ class Title_Screen:
 
 
     def _get_title_text(self):
-        """Returns Centered_Text instance representing title text."""
-        return Centered_Text(
+        """Returns Text instance representing title text."""
+        return Text(
             self,
             self.settings.font_bold_filename,
             96,
             self.settings.font_color,
-            "zuckbot",
+            'zuckbot',
+            {'center': self.screen_rect.center},
+            0,
             -50,
         )
 
 
     def _get_prompt_text(self):
-        """Returns Centered_Text instance representing text prompting user to
-        press enter."""
-        return Blinking_Centered_Text(
+        """Returns Text instance prompting user to press enter."""
+        return Blinking_Text(
             self,
             self.settings.font_light_filename,
             48,
             self.settings.font_color,
-            "Press Enter",
+            'Press Enter',
+            {'center': self.screen_rect.center},
+            0,
             50,
         )
 

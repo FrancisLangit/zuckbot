@@ -2,7 +2,7 @@ import random
 
 import pygame
 
-from .centered_text import Centered_Text
+from .text import Text
 from .zuckbot_answers import Zuckbot_Answers
 
 
@@ -36,14 +36,15 @@ class Zuckbot:
 
 
     def _get_answer_text(self, answer_string):
-        """Returns Centered_Text instance with text set to answer_string."""
-        return Centered_Text(
+        """Returns Text instance with text set to answer_string."""
+        return Text(
             self.gamestate, 
             self.settings.font_mono_filename,
             25,
             self.settings.font_color,
             answer_string,
-            250,
+            rect_alignment={'center': self.screen_rect.center},
+            y_offset=250,
         )
 
 
