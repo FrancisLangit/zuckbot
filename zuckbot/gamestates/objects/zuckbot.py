@@ -31,7 +31,6 @@ class Zuckbot:
         when blitting to screen."""
         answer_image_rect = self.answer_image.get_rect(
             center=self.screen_rect.center)
-        answer_image_rect.y -= 10
         return answer_image_rect
 
 
@@ -40,11 +39,11 @@ class Zuckbot:
         return Text(
             self.gamestate, 
             self.settings.font_mono_filename,
-            25,
+            20,
             self.settings.font_color,
             answer_string,
             rect_alignment={'center': self.screen_rect.center},
-            y_offset=250,
+            y_offset=260,
         )
 
 

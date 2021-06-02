@@ -20,8 +20,10 @@ class Settings:
         self.font_mono_filename = 'data/fonts/ibm_plex_mono_reg.ttf'
 
         # Question Input
-        self.question_input_max_length = 64
-        self.question_input_dest = (50, 50)
+        self.question_input_max_length = 50
+        self.question_input_dest = (50, 75)
+        self.question_input_border_dest = (50, 130)
+        self.question_input_border_size = (1100, 1)
 
         # Zuckbot
         self.zuckbot_neutral_filename = ('data/images/zuckbot_neutral.jpg')

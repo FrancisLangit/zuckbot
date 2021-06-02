@@ -23,36 +23,25 @@ class Border_Text:
             14,
             self.settings.font_color,
             'Press ESC to exit to title screen.',
-            {'topleft': self.screen_rect.topleft},
-            25,
-            20
-        )
-        self.stanford_text = Text(
-            self.gamestate,
-            self.settings.font_light_filename,
-            14,
-            self.settings.font_color,
-            'Stanford University • Code In Place 2021',
-            {'topright': self.screen_rect.topright},
-            -25,
-            20
+            {'midtop': self.screen_rect.midtop},
+            y_offset=20,
         )
         self.copyright_text = Text(
             self.gamestate, 
             self.settings.font_light_filename,
             14,
             self.settings.font_color,
-            'MIT License • Copyright © 2021 • Francis Langit',
+            'Copyright © 2021 • francis.villanueva.langit@gmail.com',
             {'bottomleft': self.screen_rect.bottomleft},
             25,
             -20
         )
-        self.email_text = Text(
+        self.stanford_text = Text(
             self.gamestate, 
             self.settings.font_light_filename,
             14,
             self.settings.font_color,
-            'francis.villanueva.langit@gmail.com',
+            'Stanford University • Code In Place 2021',
             {'bottomright': self.screen_rect.bottomright},
             -25,
             -20
@@ -64,4 +53,3 @@ class Border_Text:
         self.esc_text.blitme()
         self.stanford_text.blitme()
         self.copyright_text.blitme()
-        self.email_text.blitme()

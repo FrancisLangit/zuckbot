@@ -12,7 +12,10 @@ class Question_Input:
         self.settings = gamestate.settings
         self.screen = gamestate.screen
         self.text_input = self._get_text_input()
-        self.bottom_border_rect = pygame.Rect(50, 105, 1100, 1)
+        self.bottom_border_rect = pygame.Rect(
+            self.settings.question_input_border_dest,
+            self.settings.question_input_border_size,
+        )
 
 
     def _get_text_input(self):
