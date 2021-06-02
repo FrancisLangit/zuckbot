@@ -1,7 +1,6 @@
 import random
 
 import pygame
-import pyttsx3
 
 from .centered_text import Centered_Text
 from .zuckbot_answers import Zuckbot_Answers
@@ -17,8 +16,6 @@ class Zuckbot:
         self.settings = gamestate.settings
         self.screen = gamestate.screen
         self.screen_rect = gamestate.screen_rect
-
-        self.tts_engine = pyttsx3.init()
 
         self.answers = Zuckbot_Answers().get()
 
@@ -51,8 +48,8 @@ class Zuckbot:
 
 
     def answer(self):
-        """Makes Zuckbot speak an answer and display an image from a randomly
-        chosen tuple value."""
+        """Makes Zuckbot speak a randomly chosen answer and change appearance 
+        in accordance with such."""
         answer = random.choice(self.answers)
         answer['sound'].play()
         self.answer_image = answer['image']
