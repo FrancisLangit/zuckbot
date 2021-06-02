@@ -38,14 +38,14 @@ class Zuckbot:
                 self.settings.zuckbot_affirmative_answers,
                 pygame.image.load(self.settings.zuckbot_affirmative_filename)
             ),
-            # **dict.fromkeys(
-            #     self.settings.zuckbot_noncomittal_answers,
-            #     pygame.image.load(self.settings.zuckbot_noncomittal_filename)
-            # ),
-            # **dict.fromkeys(
-            #     self.settings.zuckbot_negative_answers,
-            #     pygame.image.load(self.settings.zuckbot_negative_filename)
-            # )
+            **dict.fromkeys(
+                self.settings.zuckbot_noncomittal_answers,
+                pygame.image.load(self.settings.zuckbot_noncomittal_filename)
+            ),
+            **dict.fromkeys(
+                self.settings.zuckbot_negative_answers,
+                pygame.image.load(self.settings.zuckbot_negative_filename)
+            )
         }
 
 
