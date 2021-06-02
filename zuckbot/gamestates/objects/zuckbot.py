@@ -62,6 +62,12 @@ class Zuckbot:
         self.answer_image = pygame.image.load(
             self.settings.zuckbot_neutral_filename)
 
+    
+    def update(self):
+        """Checks if Zuckbot is already answering. If not, calls reser()."""
+        if not pygame.mixer.get_busy():
+            self.reset()
+
 
     def blitme(self):
         """Blits the object onto the screen."""

@@ -52,7 +52,7 @@ class Game_Screen:
                 self.is_running = False
             if event.type == pygame.KEYDOWN:
                 self._check_keydown_events(event)
-
+                
 
     def run_gamestate(self):
         """Runs the game loop of the gamestate."""
@@ -61,7 +61,9 @@ class Game_Screen:
 
             events = pygame.event.get()
             self._check_events(events)
+
             self.question_input.update(events)
+            self.zuckbot.update()
 
             self.question_input.blitme()
             self.zuckbot.blitme()
