@@ -18,6 +18,8 @@ class Main:
         self.screen = pygame.display.set_mode(self.settings.screen_size)
         self.screen_rect = self.screen.get_rect()
         pygame.display.set_caption(self.settings.screen_caption)
+        pygame.display.set_icon(
+            pygame.image.load('data/images/zuckbot_neutral.jpg'))
 
         # Gamestates
         self.title_screen = Title_Screen(self)
