@@ -35,7 +35,7 @@ It is also worth noting that the following external libraries were used in the c
 
 ![GIF showing usage of application](./readme_usage_gif.gif)
 
-Users are given access to interacting with `zuckbot` upon pressing `enter` in the title screen. He responds well to any yes or no question but anyone is very welcome to input other strings that they may think he will find amusing. On that that note, it is worth knowing `zuckbot's`  personality is rather shy. You might find him going surfing or asking for legal counsel before answering your question properly, so be patient.
+Users are given access to interacting with `zuckbot` upon pressing `enter` in the title screen. He responds well to any yes or no question but anyone is very welcome to input other strings that they may think he will find amusing. On that that note, `zuckbot's`  personality is rather shy. You might find him going surfing or asking for legal counsel first before answering your question, so be patient.
 
 ### Contributing
 
