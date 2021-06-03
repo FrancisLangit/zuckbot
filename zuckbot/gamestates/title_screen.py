@@ -3,7 +3,7 @@ sys.path.append(".")
 
 import pygame
 
-from .objects.centered_text import Centered_Text
+from .objects.text import Text, Blinking_Text
 
 
 class Title_Screen:
@@ -18,31 +18,35 @@ class Title_Screen:
 
         self.title_text = self._get_title_text()
         self.prompt_text = self._get_prompt_text()
+        self.prompt_text_blink_count = 0
         
         self.is_running = True
 
 
     def _get_title_text(self):
-        """Returns Centered_Text instance representing title text."""
-        return Centered_Text(
+        """Returns Text instance representing title text."""
+        return Text(
             self,
             self.settings.font_bold_filename,
             96,
             self.settings.font_color,
-            "zuckbot",
+            'zuckbot',
+            {'center': self.screen_rect.center},
+            0,
             -50,
         )
 
 
     def _get_prompt_text(self):
-        """Returns Centered_Text instance representing text prompting user to
-        press enter."""
-        return Centered_Text(
+        """Returns Text instance prompting user to press enter."""
+        return Blinking_Text(
             self,
             self.settings.font_light_filename,
             48,
             self.settings.font_color,
-            "Press Enter",
+            'Press Enter',
+            {'center': self.screen_rect.center},
+            0,
             50,
         )
 
@@ -59,7 +63,7 @@ class Title_Screen:
         """Checks events of the gamestate."""
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                self.is_running = False
+                sys.exit()  
             if event.type == pygame.KEYDOWN:
                 self._check_keydown_events(event)
 
@@ -71,7 +75,9 @@ class Title_Screen:
 
             self._check_events()
 
+            self.prompt_text.update_blink()
+
             self.title_text.blitme()
             self.prompt_text.blitme()
-            
+
             pygame.display.flip()

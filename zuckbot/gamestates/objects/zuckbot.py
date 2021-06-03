@@ -1,45 +1,76 @@
 import random
 
-import pyttsx3
+import pygame
+
+from .text import Text
+from .zuckbot_answers import Zuckbot_Answers
 
 
 class Zuckbot:
     """Virtual reincarnation of Mark Zuckerberg."""
 
 
-    def __init__(self):
+    def __init__(self, gamestate):
         """Initializes Zuckbot class attributes."""
-        self.tts_engine = pyttsx3.init()
+        self.gamestate = gamestate
+        self.settings = gamestate.settings
+        self.screen = gamestate.screen
+        self.screen_rect = gamestate.screen_rect
 
-        self.answers = [
-            # Affirmative
-            """Yes, I believe that that's correct.""",
-            """If you do the things that are easier first, then you can 
-            actually make a lot of progress.""",
-            """It's almost a disadvantage if you're not on it now.""",
-            """There's a lot of that in Silicon Valley.""",
-            """Yes.""",
+        self.answers = Zuckbot_Answers().get()
 
-            # Non-commital
-            """I'm not sure what that means.""",
-            """I'm not sure of the answer to that question.""",
-            """I hope not.""",
-            """This is a complex issue that I think deserves more than a one 
-            word answer.""",
-            """I don't know the answer to that off the top of my head.""",
+        self.answer_image = pygame.image.load(
+            self.settings.zuckbot_neutral_filename)
+        self.answer_image_rect = self._get_answer_image_rect()
 
-            # Negative
-            """A squirrel dying in front of your house may be more relevant to
-            your interests right now.""",
-            """Certainly doesn't feel like that to me.""",
-            """No, I would not choose to do that publicly here.""",
-            """If you're always under the pressure of real identity, I think 
-            that is somewhat of a burden.""",        
-            """No.""",
-        ]
+        self.answer_text = self._get_answer_text('Awaiting question.')
+        
+
+    def _get_answer_image_rect(self):
+        """Returns rect of Zuckbot's Pygame image object. To be used as pos 
+        when blitting to screen."""
+        answer_image_rect = self.answer_image.get_rect(
+            center=self.screen_rect.center)
+        return answer_image_rect
 
 
-    def speak(self):
-        """Makes Zuckbot's text-to-speech engine say something random."""
-        self.tts_engine.say(random.choice(self.answers))
-        self.tts_engine.runAndWait()
+    def _get_answer_text(self, answer_string):
+        """Returns Text instance with text set to answer_string."""
+        return Text(
+            self.gamestate, 
+            self.settings.font_mono_filename,
+            20,
+            self.settings.font_color,
+            answer_string,
+            rect_alignment={'center': self.screen_rect.center},
+            y_offset=260,
+        )
+
+
+    def answer(self):
+        """Makes Zuckbot speak a randomly chosen answer and change appearance 
+        in accordance with such."""
+        answer = random.choice(self.answers)
+        answer['sound'].play()
+        self.answer_image = answer['image']
+        self.answer_text = self._get_answer_text(answer['text'])
+
+
+    def reset(self):
+        """Resets Zuckbot's text and image back to default values."""
+        self.answer_text = self._get_answer_text('Awaiting question.')
+        self.answer_image = pygame.image.load(
+            self.settings.zuckbot_neutral_filename)
+        pygame.mixer.stop()
+
+    
+    def update(self):
+        """Checks if Zuckbot is already answering. If not, calls reset()."""
+        if not pygame.mixer.get_busy():
+            self.reset()
+
+
+    def blitme(self):
+        """Blits the object onto the screen."""
+        self.screen.blit(self.answer_image, self.answer_image_rect)
+        self.answer_text.blitme()

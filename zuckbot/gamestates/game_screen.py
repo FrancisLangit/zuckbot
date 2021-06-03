@@ -1,8 +1,10 @@
-from zuckbot.gamestates.objects.zuckbot import Zuckbot
+import sys
+
 import pygame
 
 from .objects.question_input import Question_Input
 from .objects.zuckbot import Zuckbot
+from .objects.border_text import Border_Text
 
 
 class Game_Screen:
@@ -17,27 +19,41 @@ class Game_Screen:
         self.screen_rect = main.screen_rect
 
         self.question_input = Question_Input(self)
-        self.zuckbot = Zuckbot()
+        self.zuckbot = Zuckbot(self)
+        self.border_text = Border_Text(self)
 
         self.is_running = False
+
+
+    def _exit_to_title_screen(self):
+        """Resets gamestate's objects and switches to title screen."""
+        self.question_input.reset()
+        self.zuckbot.reset()
+        self.main.switch_gamestate(self, self.main.title_screen)
+
+
+    def _validate_question(self):
+        """Checks user's inputted question. If question input is not blank 
+        and if Zuckbot isn't currently answering, Zuckbot responds and input 
+        field is cleared."""
+        if not self.question_input.is_blank() and not pygame.mixer.get_busy():
+            self.zuckbot.answer()
+            self.question_input.text_input.clear_text()
 
 
     def _check_keydown_events(self, event):
         """Checks keydown events of the gamestate."""
         if event.key == pygame.K_ESCAPE:
-            self.question_input.reset()
-            self.main.switch_gamestate(self, self.main.title_screen)
+            self._exit_to_title_screen()
         if event.key == pygame.K_RETURN:
-            if not self.question_input.is_blank():
-                self.zuckbot.speak()
-                self.question_input.text_input.clear_text()
+            self._validate_question()
 
 
     def _check_events(self, events):
         """Checks events of the gamestate."""
         for event in events:
             if event.type == pygame.QUIT:
-                self.is_running = False
+                sys.exit()
             if event.type == pygame.KEYDOWN:
                 self._check_keydown_events(event)
 
@@ -49,8 +65,12 @@ class Game_Screen:
 
             events = pygame.event.get()
             self._check_events(events)
+
             self.question_input.update(events)
+            self.zuckbot.update()
 
             self.question_input.blitme()
+            self.zuckbot.blitme()
+            self.border_text.blitme()
 
             pygame.display.flip()

@@ -1,7 +1,8 @@
 import pygame
 
+
 class Settings:
-    """"""
+    """Settings of the application."""
 
     def __init__(self):
         """Initialize Settings class attributes."""
@@ -13,10 +14,16 @@ class Settings:
 
         # Font
         self.font_color = (255, 255, 255)
-        self.font_bold_filename = './zuckbot/data/Open Sans Bold.ttf'
-        self.font_light_filename = './zuckbot/data/Open Sans Light.ttf'
-        self.font_regular_filename = './zuckbot/data/Open Sans Regular.ttf'
+        self.font_bold_filename = 'data/fonts/open_sans_bold.ttf'
+        self.font_light_filename = 'data/fonts/open_sans_light.ttf'
+        self.font_regular_filename = 'data/fonts/open_sans_reg.ttf'
+        self.font_mono_filename = 'data/fonts/ibm_plex_mono_reg.ttf'
 
         # Question Input
-        self.question_input_max_length = 64
-        self.question_input_dest = (50, 50)
+        self.question_input_max_length = 50
+        self.question_input_dest = (50, 75)
+        self.question_input_border_dest = (50, 130)
+        self.question_input_border_size = (1100, 1)
+
+        # Zuckbot
+        self.zuckbot_neutral_filename = ('data/images/zuckbot_neutral.jpg')
