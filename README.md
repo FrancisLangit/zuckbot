@@ -8,8 +8,9 @@
 
 It is also worth noting that the following external libraries were used in the creation of `zuckbot`:
 
-- [`pygame`](https://www.pygame.org/)
-- [`pygame-text-input`](https://github.com/Nearoo/pygame-text-input)
+- [`pygame`](https://www.pygame.org/) - Serves as development library on which `zuckbot` is primarily based on.
+- [`pygame-text-input`](https://github.com/Nearoo/pygame-text-input) - Used to generate the text input field that user enters question into.
+- [`pyttsx3`](https://github.com/nateshmbhat/pyttsx3) - Not present in actual code base, but was externally used to generate audio of `zuckbot's` answers.
 
 ### Installation
 
