@@ -1,6 +1,6 @@
 ![Banner](./readme_banner.png)
 
-`zuckbot` is a virtual reincarnation of [Mark Zuckerberg](https://en.wikipedia.org/wiki/Mark_Zuckerberg) encapsulated in a desktop application. Users are given the ability to ask `zuckbot` a question and be given a one of over twenty different responses.
+`zuckbot` is a virtual reincarnation of [Mark Zuckerberg](https://en.wikipedia.org/wiki/Mark_Zuckerberg) encapsulated in a desktop application. Users are given the ability to ask `zuckbot` a question and be given one of over twenty different responses.
 
 ### Background
 
